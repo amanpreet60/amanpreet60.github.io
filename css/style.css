@@ -75,8 +75,9 @@ body{
   padding:28px 18px;
   border-right:1px solid var(--card-border);
   background: linear-gradient(180deg, rgba(255,255,255,1) 0%, var(--muted-blue) 100%);
-  position:sticky;
+  position:fixed;
   top:64px;
+  left:0;
   height: calc(100vh - 64px);
   overflow:auto;
   display:flex;
@@ -131,6 +132,7 @@ body{
 .content{
   flex:1;
   padding: 32px;
+  margin-left: var(--sidebar-w);  /* shift right to match sidebar */
   min-height: calc(100vh - 64px);
   display:flex;
   justify-content:center;
@@ -200,12 +202,13 @@ body{
     min-width:100%;
     position:relative;
     top:0;
+    left:0;
     height:auto;
     border-right:none;
     border-bottom: 1px solid var(--card-border);
     padding:18px 16px;
   }
-  .content{ padding:18px; }
+  .content{ padding:18px; margin-left:0; }
   .nav-inner{ gap:12px; padding:0 10px; overflow:auto; }
   .nav-link{ padding:8px; font-size:0.9rem; white-space:nowrap; }
 }
