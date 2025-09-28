@@ -1,286 +1,132 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Aman — Resume</title>
-  <meta name="description" content="Resume of Aman — student and aspiring data scientist / ML engineer." />
-  <meta property="og:title" content="Aman — Resume" />
-  <meta property="og:description" content="Student • Data Science • Machine Learning" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://your-username.github.io" />
-  <meta name="theme-color" content="#0ea5e9" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💼</text></svg>">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Amanpreet Singh - Resume</title>
   <style>
-    :root {
-      --bg: #0b0f19;
-      --elev: #111827;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --brand: #0ea5e9; /* sky-500 */
-      --chip: #1f2937;
-      --ring: 0 0 0 3px rgba(14,165,233,.35);
-    }
-    :root.light {
-      --bg: #f8fafc;
-      --elev: #ffffff;
-      --text: #0f172a;
-      --muted: #475569;
-      --brand: #0284c7; /* sky-600 */
-      --chip: #e2e8f0;
-    }
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
     body {
-      margin: 0; font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      background: var(--bg); color: var(--text);
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background-color: #fefcfb;
+      color: #333;
     }
-    .container { max-width: 980px; margin: 0 auto; padding: 24px; }
     header {
-      position: sticky; top: 0; z-index: 10;
-      backdrop-filter: saturate(140%) blur(8px);
-      background: color-mix(in oklab, var(--bg) 85%, transparent);
-      border-bottom: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
+      text-align: center;
+      background: #d8e2dc;
+      padding: 2rem 1rem;
     }
-    .topbar { display: flex; gap: 16px; align-items: center; justify-content: space-between; padding: 10px 24px; }
-    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
-    .avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--chip); display: grid; place-items: center; font-size: 22px; }
-    nav a { color: var(--muted); text-decoration: none; margin-left: 16px; font-weight: 600; }
-    nav a:hover { color: var(--text); }
-    .btn {
-      appearance: none; border: 1px solid color-mix(in oklab, var(--text) 15%, transparent); background: var(--elev); color: var(--text);
-      padding: 10px 14px; border-radius: 999px; font-weight: 700; cursor: pointer;
+    header img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #b8c1ec;
     }
-    .btn:hover { box-shadow: var(--ring); }
-    .hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 24px; padding: 36px 24px 8px; align-items: center; }
-    .hero h1 { font-size: clamp(28px, 4vw, 40px); margin: 0 0 8px; }
-    .muted { color: var(--muted); }
-    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-    .chip { background: var(--chip); color: var(--text); padding: 6px 10px; border-radius: 999px; font-size: 13px; }
-    .grid { display: grid; gap: 16px; }
-    section { margin-top: 28px; }
-    .card {
-      background: var(--elev); border: 1px solid color-mix(in oklab, var(--text) 12%, transparent); border-radius: 18px; padding: 18px;
-      box-shadow: 0 1px 0 rgba(0,0,0,.12), 0 6px 24px rgba(0,0,0,.14);
+    header h1 {
+      margin: 1rem 0 0.5rem;
+      font-size: 2rem;
     }
-    .card h3 { margin: 0 0 8px; font-size: 18px; }
-    .row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
-    .row .place { font-weight: 700; }
-    .row .date { color: var(--muted); font-size: 14px; white-space: nowrap; }
-    ul { margin: 8px 0 0 20px; }
-    li { margin: 4px 0; }
-    a { color: var(--brand); }
-    footer { color: var(--muted); text-align: center; padding: 24px; font-size: 14px; }
-
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .skills { display: flex; flex-wrap: wrap; gap: 8px; }
-
-    @media (max-width: 840px) {
-      .hero { grid-template-columns: 1fr; }
-      .two-col { grid-template-columns: 1fr; }
-      nav { display: none; }
+    header p {
+      margin: 0.3rem 0;
+      font-size: 1.1rem;
     }
-
-    /* Print-friendly resume */
-    @media print {
-      header, .actions, footer { display: none !important; }
-      body { background: white; color: black; }
-      .card { box-shadow: none; border: 1px solid #ddd; }
+    nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #444;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #6c63ff;
+    }
+    section {
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem 1rem;
+      background: #f8edeb;
+      margin-top: 1.5rem;
+      border-radius: 10px;
+    }
+    section h2 {
+      color: #333;
+      border-bottom: 2px solid #b8c1ec;
+      padding-bottom: 0.5rem;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    ul li {
+      margin: 0.5rem 0;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #d8e2dc;
+      margin-top: 2rem;
+      font-size: 0.9rem;
     }
   </style>
-  <script>
-    // Theme toggle + remember choice
-    const setTheme = t => {
-      document.documentElement.classList.toggle('light', t === 'light');
-      localStorage.setItem('theme', t);
-    };
-    const initTheme = () => {
-      const saved = localStorage.getItem('theme');
-      const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-      setTheme(saved || (prefersLight ? 'light' : 'dark'));
-    };
-    document.addEventListener('DOMContentLoaded', initTheme);
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Aman",
-    "url": "https://your-username.github.io/",
-    "jobTitle": "Student / Data Science & ML",
-    "sameAs": [
-      "https://github.com/your-username",
-      "https://www.linkedin.com/in/your-handle"
-    ]
-  }
-  </script>
 </head>
 <body>
   <header>
-    <div class="topbar container">
-      <a class="brand" href="#top" aria-label="Home">
-        <span class="avatar" aria-hidden>🧠</span>
-        <div>
-          <div style="font-weight:800; letter-spacing:.2px">Aman</div>
-          <div class="muted" style="font-size:13px">Student • Data Science • ML</div>
-        </div>
-      </a>
-      <nav aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <div class="actions">
-        <button class="btn" onclick="setTheme(document.documentElement.classList.contains('light') ? 'dark' : 'light')" aria-label="Toggle theme">Toggle theme</button>
-        <a class="btn" href="resume.pdf" download>Download PDF</a>
-      </div>
-    </div>
+    <img src="your-photo.jpg" alt="Amanpreet Singh">
+    <h1>Amanpreet Singh</h1>
+    <p>Master’s in Computational Science and Engineering @ McMaster University</p>
+    <nav>
+      <a href="https://www.linkedin.com/in/amanpreetsingh2212/" target="_blank">LinkedIn</a>
+      <a href="mailto:amanpreetofficial22@gmail.com">Email</a>
+      <a href="https://github.com/amanpreet60" target="_blank">GitHub</a>
+    </nav>
   </header>
 
-  <main id="top" class="container">
-    <section id="about" class="hero card">
-      <div>
-        <h1>Hi, I'm Aman.</h1>
-        <p class="muted">I'm a student passionate about <strong>data science</strong>, <strong>machine learning</strong>, and <strong>scientific computing</strong>. I enjoy turning messy data into useful models and clear visuals. Open to internships and collaborations.</p>
-        <div class="chips">
-          <span class="chip">Python</span>
-          <span class="chip">Pandas</span>
-          <span class="chip">Scikit-learn</span>
-          <span class="chip">PyTorch</span>
-          <span class="chip">R</span>
-          <span class="chip">SQL</span>
-          <span class="chip">Visualization</span>
-        </div>
-        <p style="margin-top:12px">
-          <a href="mailto:you@email.com" class="btn">Email me</a>
-          <a href="https://github.com/your-username" class="btn" target="_blank" rel="noreferrer">GitHub</a>
-          <a href="https://www.linkedin.com/in/your-handle" class="btn" target="_blank" rel="noreferrer">LinkedIn</a>
-        </p>
-      </div>
-      <div class="card" style="margin:0">
-        <h3 style="margin-top:0">Highlights</h3>
-        <ul>
-          <li>Built end‑to‑end ML pipelines (feature engineering → training → evaluation → deploy).</li>
-          <li>Experience with image/audio datasets, NLP, and scientific data analysis.</li>
-          <li>Comfortable with optimization, statistical modeling, and data visualization.</li>
-        </ul>
-      </div>
-    </section>
+  <section>
+    <h2>Education</h2>
+    <ul>
+      <li><strong>Master’s in Computational Science and Engineering</strong>, McMaster University, Canada (2026)</li>
+      <li><strong>Bachelor of Computer Science & Business Systems</strong>, NMIMS University, India (2023) — CGPA: 3.70/4</li>
+    </ul>
+  </section>
 
-    <section id="experience" class="two-col">
-      <div class="card">
-        <div class="row">
-          <h3 class="place">Teaching Assistant — McMaster University</h3>
-          <div class="date">Sept 2024 – Apr 2025</div>
-        </div>
-        <div class="muted">Department of Mathematics & Statistics</div>
-        <ul>
-          <li>Led labs on <em>computational statistics</em> and <em>data visualization in Python/R</em>.</li>
-          <li>Designed exercises, graded assignments, and held weekly office hours.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="row">
-          <h3 class="place">Research Assistant — McMaster University</h3>
-          <div class="date">Jan 2025 – Present</div>
-        </div>
-        <div class="muted">Scientific Computing</div>
-        <ul>
-          <li>Worked on pattern detection in spatial data; reproduced results in R.</li>
-          <li>Implemented experiments and prepared slides for reading groups.</li>
-        </ul>
-      </div>
-    </section>
+  <section>
+    <h2>Skills</h2>
+    <p><strong>Programming:</strong> Python, SQL, Git, JavaScript, C, R, CSS, HTML</p>
+    <p><strong>Tools:</strong> ServiceNow, MATLAB, SSMS, RStudio, Jupyter Notebook, Jira, StarUML</p>
+    <p><strong>Certification:</strong> Microsoft Certified: Azure AI Fundamentals</p>
+  </section>
 
-    <section id="projects">
-      <h2 style="margin:8px 0">Selected Projects</h2>
-      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
-        <article class="card">
-          <div class="row">
-            <h3 class="place">E‑commerce Image Composer</h3>
-            <a class="date" href="https://github.com/your-username/ecom-composer" target="_blank" rel="noreferrer">Code ↗</a>
-          </div>
-          <p class="muted">Places product cutouts into lifestyle scenes using open‑source diffusion + segmentation. Simple web UI.</p>
-          <ul>
-            <li>Automated background removal and harmonization.</li>
-            <li>Benchmarked quality with CLIP‑based metrics.</li>
-          </ul>
-        </article>
-        <article class="card">
-          <div class="row">
-            <h3 class="place">ZenML Prediction API</h3>
-            <a class="date" href="https://github.com/your-username/zenml-api" target="_blank" rel="noreferrer">Code ↗</a>
-          </div>
-          <p class="muted">Prediction pipeline packaged as a REST API with Docker. Includes CI for tests and linting.</p>
-          <ul>
-            <li>Feature store + reproducible training.</li>
-            <li>FastAPI serving with swagger docs.</li>
-          </ul>
-        </article>
-        <article class="card">
-          <div class="row">
-            <h3 class="place">Hands‑On LLMs Notes</h3>
-            <a class="date" href="https://github.com/your-username/llm-notes" target="_blank" rel="noreferrer">Code ↗</a>
-          </div>
-          <p class="muted">Annotated implementations from the book: tokenizers, attention, finetuning, and evaluation.</p>
-          <ul>
-            <li>Colab notebooks and reproducible runs.</li>
-          </ul>
-        </article>
-      </div>
-    </section>
+  <section>
+    <h2>Experience</h2>
+    <ul>
+      <li><strong>Data Science Teaching Assistant</strong>, McMaster University (Sep 2025 – Present)</li>
+      <li><strong>Systems Engineer</strong>, Shell India (Aug 2023 – Dec 2024)</li>
+      <li><strong>Data Analyst Intern</strong>, Vakrangee Ltd. (May 2022 – Jun 2022)</li>
+    </ul>
+  </section>
 
-    <section id="skills" class="card">
-      <h2 style="margin:8px 0">Skills</h2>
-      <div class="skills">
-        <span class="chip">Python</span>
-        <span class="chip">R</span>
-        <span class="chip">Pandas</span>
-        <span class="chip">NumPy</span>
-        <span class="chip">scikit‑learn</span>
-        <span class="chip">PyTorch</span>
-        <span class="chip">SQL</span>
-        <span class="chip">FastAPI</span>
-        <span class="chip">Docker</span>
-        <span class="chip">Git & GitHub</span>
-        <span class="chip">Visualization</span>
-      </div>
-    </section>
+  <section>
+    <h2>Projects</h2>
+    <ul>
+      <li><a href="https://github.com/amanpreet60/AI-Career-Guidance-System" target="_blank">AI Career Guidance System</a></li>
+      <li><a href="https://github.com/amanpreet60/LICENSE-PLATE-LOCATION-METHOD-BASED-ON-EDGE-DETECTION" target="_blank">License Plate Detection</a></li>
+      <li><a href="https://github.com/amanpreet60/Audio-Classification-of-Emergency-Vehicle-Sirens-Using-Recurrent-Neural-Network-Architectures" target="_blank">Audio Classification of Emergency Vehicle Sirens</a></li>
+      <li><a href="https://github.com/amanpreet60/SMS-Spam-Detection" target="_blank">SMS Spam Detection</a></li>
+    </ul>
+  </section>
 
-    <section id="education" class="card">
-      <h2 style="margin:8px 0">Education</h2>
-      <div class="row">
-        <div>
-          <strong>McMaster University</strong> — MSc/Thesis (CSE)
-          <div class="muted">Focus: Data Science, ML, Scientific Computing</div>
-        </div>
-        <div class="date">Fall 2025 – Present</div>
-      </div>
-      <div class="row" style="margin-top:8px">
-        <div>
-          <strong>BSc — Mathematics & Statistics</strong>
-          <div class="muted">Relevant: Optimization, OR, Data Mining, Image Processing</div>
-        </div>
-        <div class="date">2019 – 2023</div>
-      </div>
-    </section>
-
-    <section id="contact" class="card">
-      <h2 style="margin:8px 0">Contact</h2>
-      <p>Email: <a href="mailto:you@email.com">you@email.com</a> · GitHub: <a href="https://github.com/your-username" target="_blank" rel="noreferrer">@your-username</a> · LinkedIn: <a href="https://www.linkedin.com/in/your-handle" target="_blank" rel="noreferrer">/in/your-handle</a></p>
-      <p class="muted">Tip: Add a <code>resume.pdf</code> to the repo so the “Download PDF” button works.</p>
-    </section>
-  </main>
+  <section>
+    <h2>Publications</h2>
+    <ul>
+      <li>AI Career Recommender & Guidance Systems, Scienceopen (2024)</li>
+      <li>Audio Classification of Emergency Vehicle Sirens, Springer Book Series (2023)</li>
+    </ul>
+  </section>
 
   <footer>
-    © <span id="year"></span> Aman • Built with plain HTML/CSS/JS and hosted on GitHub Pages.
+    &copy; 2025 Amanpreet Singh | Made with ❤️ for GitHub Pages
   </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
