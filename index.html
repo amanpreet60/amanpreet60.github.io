@@ -1,90 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Amanpreet Singh - Resume</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #fefefe;
+      background: #fdfdfd;
       color: #333;
-      display: flex;
-      height: 100vh;
+      line-height: 1.6;
     }
-    /* Left Sidebar */
-    .sidebar {
-      width: 280px;
-      background: #dbeafe; /* pastel blue */
-      color: #111;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 2rem 1rem;
-      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+
+    /* ===== Top Navigation ===== */
+    .topnav {
       position: fixed;
-      height: 100%;
+      top: 0;
+      width: 100%;
+      background: #1e3a8a; /* deep pastel blue */
+      padding: 0.8rem 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      z-index: 1000;
+    }
+    .topnav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .topnav a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== Layout ===== */
+    .container {
+      display: flex;
+      flex-direction: row;
+      margin-top: 60px; /* space for navbar */
+    }
+
+    /* Left profile section */
+    .sidebar {
+      flex: 0 0 300px;
+      background: #e0f2fe; /* light pastel blue */
+      text-align: center;
+      padding: 2rem 1rem;
+      border-right: 1px solid #ddd;
+      position: sticky;
+      top: 60px; /* below navbar */
+      height: calc(100vh - 60px);
     }
     .sidebar img {
-      width: 150px;
-      height: 150px;
+      width: 160px;
+      height: 160px;
       border-radius: 50%;
       object-fit: cover;
       border: 4px solid white;
-      margin-bottom: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
     .sidebar h1 {
+      margin-top: 1rem;
       font-size: 1.5rem;
-      margin: 0.5rem 0;
-      text-align: center;
+      color: #1e3a8a;
     }
     .sidebar p {
-      margin: 0.2rem 0;
-      text-align: center;
+      margin: 0.3rem 0;
     }
-    .sidebar nav {
-      margin-top: 1.5rem;
-    }
-    .sidebar nav a {
-      display: block;
-      margin: 0.5rem 0;
+    .sidebar .buttons a {
+      display: inline-block;
+      margin: 0.4rem;
+      padding: 0.4rem 0.8rem;
+      background: white;
+      border: 1px solid #1e3a8a;
+      border-radius: 6px;
       text-decoration: none;
       color: #1e3a8a;
-      font-weight: bold;
+      font-size: 0.9rem;
+      transition: background 0.2s;
     }
-    .sidebar nav a:hover {
-      color: #111;
+    .sidebar .buttons a:hover {
+      background: #1e3a8a;
+      color: white;
     }
 
-    /* Right Content */
+    /* Right content */
     .content {
-      margin-left: 280px;
-      padding: 2rem;
-      overflow-y: auto;
       flex: 1;
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
     }
     section {
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
     }
     section h2 {
-      border-bottom: 2px solid #93c5fd;
-      padding-bottom: 0.3rem;
       margin-bottom: 1rem;
+      border-bottom: 2px solid #93c5fd;
+      padding-bottom: 0.4rem;
       color: #1e3a8a;
     }
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    ul li {
-      margin: 0.5rem 0;
-    }
 
-    /* Project Cards */
+    /* Project cards */
     .projects {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1.5rem;
     }
     .card {
@@ -92,14 +113,14 @@
       border: 1px solid #dbeafe;
       border-radius: 12px;
       padding: 1rem;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-      transition: transform 0.2s ease;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
     }
     .card:hover {
       transform: translateY(-5px);
     }
     .card h3 {
-      margin: 0 0 0.5rem;
+      margin-top: 0;
       color: #1e3a8a;
     }
     .card a {
@@ -107,92 +128,119 @@
       color: #2563eb;
       font-weight: bold;
     }
+
     footer {
       text-align: center;
       padding: 1rem;
       font-size: 0.9rem;
-      margin-top: 2rem;
-      color: #555;
+      color: #666;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 900px) {
+      .container {
+        flex-direction: column;
+      }
+      .sidebar {
+        position: relative;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+      }
+      .content {
+        padding: 1.5rem;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <img src="your-photo.jpg" alt="Amanpreet Singh">
-    <h1>Amanpreet Singh</h1>
-    <p>Master’s in Computational Science & Engineering</p>
-    <p>McMaster University</p>
-    <nav>
-      <a href="https://www.linkedin.com/in/amanpreetsingh2212/" target="_blank">LinkedIn</a>
-      <a href="mailto:amanpreetofficial22@gmail.com">Email</a>
-      <a href="https://github.com/amanpreet60" target="_blank">GitHub</a>
-    </nav>
+  <!-- Top Nav -->
+  <div class="topnav">
+    <a href="#education">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#publications">Publications</a>
   </div>
 
-  <!-- Main Content -->
-  <div class="content">
-    <section>
-      <h2>Education</h2>
-      <ul>
-        <li><strong>Master’s in Computational Science and Engineering</strong>, McMaster University (2026)</li>
-        <li><strong>Bachelor of Computer Science & Business Systems</strong>, NMIMS University (2023) — CGPA: 3.70/4</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Skills</h2>
-      <p><strong>Programming:</strong> Python, SQL, Git, JavaScript, C, R, CSS, HTML</p>
-      <p><strong>Tools:</strong> ServiceNow, MATLAB, SSMS, RStudio, Jupyter Notebook, Jira, StarUML</p>
-      <p><strong>Certification:</strong> Microsoft Certified: Azure AI Fundamentals</p>
-    </section>
-
-    <section>
-      <h2>Experience</h2>
-      <ul>
-        <li><strong>Data Science Teaching Assistant</strong>, McMaster University (Sep 2025 – Present)</li>
-        <li><strong>Systems Engineer</strong>, Shell India (Aug 2023 – Dec 2024)</li>
-        <li><strong>Data Analyst Intern</strong>, Vakrangee Ltd. (May 2022 – Jun 2022)</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Projects</h2>
-      <div class="projects">
-        <div class="card">
-          <h3>AI Career Guidance System</h3>
-          <p>Career recommendation system with 95% accuracy using ML & psychometric tests.</p>
-          <a href="https://github.com/amanpreet60/AI-Career-Guidance-System" target="_blank">View Project</a>
-        </div>
-        <div class="card">
-          <h3>License Plate Detection</h3>
-          <p>Edge detection & image processing to locate vehicle license plates.</p>
-          <a href="https://github.com/amanpreet60/LICENSE-PLATE-LOCATION-METHOD-BASED-ON-EDGE-DETECTION" target="_blank">View Project</a>
-        </div>
-        <div class="card">
-          <h3>Audio Classification</h3>
-          <p>RNN-based classification of emergency sirens, achieving 98.8% accuracy.</p>
-          <a href="https://github.com/amanpreet60/Audio-Classification-of-Emergency-Vehicle-Sirens-Using-Recurrent-Neural-Network-Architectures" target="_blank">View Project</a>
-        </div>
-        <div class="card">
-          <h3>SMS Spam Detection</h3>
-          <p>ML-based spam/ham classifier with feature extraction & tuning.</p>
-          <a href="https://github.com/amanpreet60/SMS-Spam-Detection" target="_blank">View Project</a>
-        </div>
+  <div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <img src="your-photo.jpg" alt="Amanpreet Singh">
+      <h1>Amanpreet Singh</h1>
+      <p>Master’s in Computational Science & Engineering</p>
+      <p>McMaster University</p>
+      <div class="buttons">
+        <a href="https://www.linkedin.com/in/amanpreetsingh2212/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/amanpreet60" target="_blank">GitHub</a>
+        <a href="mailto:amanpreetofficial22@gmail.com">Email</a>
       </div>
-    </section>
+    </div>
 
-    <section>
-      <h2>Publications</h2>
-      <ul>
-        <li>AI Career Recommender & Guidance Systems, Scienceopen (2024)</li>
-        <li>Audio Classification of Emergency Vehicle Sirens, Springer (2023)</li>
-      </ul>
-    </section>
+    <!-- Main Content -->
+    <div class="content">
+      <section id="education">
+        <h2>Education</h2>
+        <ul>
+          <li><strong>Master’s in Computational Science and Engineering</strong>, McMaster University (2026)</li>
+          <li><strong>Bachelor of Computer Science & Business Systems</strong>, NMIMS University (2023) — CGPA: 3.70/4</li>
+        </ul>
+      </section>
 
-    <footer>
-      &copy; 2025 Amanpreet Singh | Made with ❤️ for GitHub Pages
-    </footer>
+      <section id="skills">
+        <h2>Skills</h2>
+        <p><strong>Programming:</strong> Python, SQL, Git, JavaScript, C, R, CSS, HTML</p>
+        <p><strong>Tools:</strong> ServiceNow, MATLAB, SSMS, RStudio, Jupyter Notebook, Jira, StarUML</p>
+        <p><strong>Certification:</strong> Microsoft Certified: Azure AI Fundamentals</p>
+      </section>
+
+      <section id="experience">
+        <h2>Experience</h2>
+        <ul>
+          <li><strong>Data Science Teaching Assistant</strong>, McMaster University (Sep 2025 – Present)</li>
+          <li><strong>Systems Engineer</strong>, Shell India (Aug 2023 – Dec 2024)</li>
+          <li><strong>Data Analyst Intern</strong>, Vakrangee Ltd. (May 2022 – Jun 2022)</li>
+        </ul>
+      </section>
+
+      <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects">
+          <div class="card">
+            <h3>AI Career Guidance System</h3>
+            <p>Career recommendation system with 95% accuracy using ML & psychometric tests.</p>
+            <a href="https://github.com/amanpreet60/AI-Career-Guidance-System" target="_blank">View Project</a>
+          </div>
+          <div class="card">
+            <h3>License Plate Detection</h3>
+            <p>Edge detection & image processing to locate vehicle license plates.</p>
+            <a href="https://github.com/amanpreet60/LICENSE-PLATE-LOCATION-METHOD-BASED-ON-EDGE-DETECTION" target="_blank">View Project</a>
+          </div>
+          <div class="card">
+            <h3>Audio Classification</h3>
+            <p>RNN-based classification of emergency sirens, achieving 98.8% accuracy.</p>
+            <a href="https://github.com/amanpreet60/Audio-Classification-of-Emergency-Vehicle-Sirens-Using-Recurrent-Neural-Network-Architectures" target="_blank">View Project</a>
+          </div>
+          <div class="card">
+            <h3>SMS Spam Detection</h3>
+            <p>ML-based spam/ham classifier with feature extraction & tuning.</p>
+            <a href="https://github.com/amanpreet60/SMS-Spam-Detection" target="_blank">View Project</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="publications">
+        <h2>Publications</h2>
+        <ul>
+          <li>AI Career Recommender & Guidance Systems, Scienceopen (2024)</li>
+          <li>Audio Classification of Emergency Vehicle Sirens, Springer (2023)</li>
+        </ul>
+      </section>
+
+      <footer>
+        &copy; 2025 Amanpreet Singh | Built for GitHub Pages
+      </footer>
+    </div>
   </div>
 </body>
 </html>
