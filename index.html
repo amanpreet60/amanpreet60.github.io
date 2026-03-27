@@ -1,134 +1,731 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Amanpreet Singh — Resume</title>
-  <meta name="description" content="Amanpreet Singh — Computational Science & Engineering | Resume">
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amanpreet Singh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --sidebar-bg: #f7f9fc;
+      --text: #1a1a2e;
+      --muted: #5a6070;
+      --subtle: #9aa0ad;
+      --blue: #2d5fa6;
+      --blue-mid: #4a7abf;
+      --blue-light: #eaf1fb;
+      --blue-border: #c8d9ef;
+      --divider: #e8ecf2;
+    }
+
+    html, body { height: 100%; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--blue-border); border-radius: 4px; }
+    * { scrollbar-width: thin; scrollbar-color: var(--blue-border) transparent; }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--divider);
+      height: 50px;
+    }
+
+    nav .inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 0 0 310px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    nav ul { list-style: none; display: flex; gap: 24px; }
+
+    nav ul a {
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--subtle);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    nav ul a:hover { color: var(--blue); }
+
+    /* ── Shell ── */
+    .shell {
+      display: flex;
+      max-width: 860px;
+      margin: 50px auto 0;
+      width: 100%;
+      min-height: calc(100vh - 50px);
+    }
+
+    /* ── LEFT sidebar ── */
+    .sidebar {
+      width: 310px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 50px;
+      height: calc(100vh - 50px);
+      background: var(--sidebar-bg);
+      border-right: 1px solid var(--divider);
+      padding: 44px 36px 36px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .hero-photo {
+      width: 165px;
+      height: 165px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 10%;
+      display: block;
+      border: 2px solid var(--blue-border);
+      margin-bottom: 20px;
+    }
+
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 40px;
+      font-weight: 400;
+      line-height: 1.05;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .hero-name em {
+      font-style: italic;
+      color: var(--blue-mid);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      font-weight: 500;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 0 0 2px var(--blue-light);
+      flex-shrink: 0;
+    }
+
+    .hero-tagline {
+      font-size: 13.5px;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      margin-bottom: auto;
+    }
+
+    .contact-links a {
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s;
+      word-break: break-all;
+    }
+
+    .contact-links a i { color: var(--blue-mid); flex-shrink: 0; font-size: 14px; width: 16px; text-align: center; margin-top: 2px; transition: color 0.15s; }
+    .contact-links a:hover i { color: var(--blue); }
+    .contact-links a:hover { color: var(--blue); }
+    .contact-links a:hover svg { stroke: var(--blue); }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 24px;
+      padding: 9px 18px;
+      background: var(--blue-light);
+      color: var(--blue);
+      border: 1px solid var(--blue-border);
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .download-btn:hover {
+      background: var(--blue);
+      color: #fff;
+      border-color: var(--blue);
+    }
+
+    .download-btn i { font-size: 12px; }
+
+    .sidebar-loc {
+      font-size: 12px;
+      color: var(--subtle);
+      letter-spacing: 0.04em;
+      margin-top: 28px;
+    }
+
+    /* ── RIGHT main ── */
+    .main {
+      flex: 1;
+      padding: 44px 44px 72px 44px;
+      max-width: 640px;
+    }
+
+    /* ── Section ── */
+    .section { margin-bottom: 52px; }
+    .section:last-child { margin-bottom: 0; }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--divider);
+    }
+
+    .section-label {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+
+    /* ── Entry ── */
+    .entry {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 32px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--divider);
+    }
+
+    .entry:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .cgpa {
+      font-size: 12px;
+      color: var(--subtle);
+      font-style: italic;
+      margin-top: 3px;
+    }
+
+    .entry-period {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--blue-mid);
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .title-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 2px;
+    }
+
+    .entry-body h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .entry-body .org-row {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0;
+      margin-bottom: 9px;
+    }
+
+    .entry-body .org {
+      font-size: 13px;
+      color: var(--blue);
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    a.org:hover { color: var(--blue-mid); text-decoration: none; }
+
+    .entry-body .loc {
+      font-size: 12px;
+      color: var(--subtle);
+      font-style: italic;
+    }
+
+    .entry-body .loc::before {
+      content: '·';
+      margin-right: 8px;
+      color: var(--blue-border);
+    }
+
+    .entry-body ul { list-style: none; padding: 0; }
+
+    .entry-body ul li {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.75;
+      padding-left: 14px;
+      position: relative;
+      margin-bottom: 4px;
+      text-align: justify;
+    }
+
+    .entry-body ul li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--blue-mid);
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .entry-body p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.75;
+      text-align: justify;
+    }
+
+    /* ── Projects ── */
+    .project-entry {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--divider);
+    }
+
+    .project-entry:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .project-entry .proj-date {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--blue-mid);
+      margin-bottom: 4px;
+    }
+
+    .project-entry h3 {
+      font-size: 15.5px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .project-entry p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+      text-align: justify;
+    }
+
+    .gh-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 6px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--blue);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .gh-link:hover { color: var(--blue-mid); }
+
+    /* ── Skills ── */
+    .skills-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .skill-row {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--divider);
+    }
+
+    .skill-row:last-child { border-bottom: none; }
+
+    .skill-cat {
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      width: 90px;
+      flex-shrink: 0;
+    }
+
+    .skill-vals {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── Publications ── */
+    .pub-entry {
+      display: flex;
+      flex-direction: column;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--divider);
+    }
+
+    .pub-entry:first-child { padding-top: 0; }
+    .pub-entry:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .pub-entry h3 {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.55;
+      margin-bottom: 5px;
+      text-align: justify;
+    }
+
+    .pub-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pub-date {
+      display: block;
+      font-size: 12px;
+      color: var(--blue-mid);
+      font-style: italic;
+      font-weight: 500;
+      margin: 4px 0 3px;
+    }
+
+    .venue {
+      display: inline-block;
+      font-size: 13px;
+      color: var(--blue);
+      font-style: italic;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    a.venue:hover { color: var(--blue-mid); text-decoration: underline; }
+
+    /* ── Mobile ── */
+    @media (max-width: 540px) {
+      .shell { flex-direction: column; margin-top: 50px; }
+      .sidebar { width: 100%; position: relative; top: 0; height: auto; border-right: none; border-bottom: 1px solid var(--divider); padding: 28px 24px; }
+      .main { padding: 28px 20px 52px; max-width: 100%; }
+      .entry, .project-entry, .pub-entry { grid-template-columns: 1fr; gap: 4px; }
+      .entry-meta, .project-entry .proj-date, .pub-date { margin-bottom: 4px; }
+      .skill-row { flex-direction: column; gap: 6px; }
+      nav ul { gap: 16px; }
+    }
+  </style>
 </head>
 <body>
-  <!-- Top Navigation -->
-  <header class="topnav" role="banner">
-    <nav class="nav-inner" role="navigation" aria-label="Primary">
-      <a class="nav-link" href="#summary">Summary</a>
-      <a class="nav-link" href="#education">Education</a>
-      <a class="nav-link" href="#skills">Skills</a>
-      <a class="nav-link" href="#experience">Experience</a>
-      <a class="nav-link" href="#projects">Projects</a>
-      <a class="nav-link" href="#publications">Publications</a>
-    </nav>
-  </header>
 
-  <div class="layout">
-    <!-- LEFT: profile column (fixed on desktop) -->
-    <aside class="sidebar" aria-label="Profile">
-      <div class="profile">
-        <img src="assets/your-photo.png" alt="Amanpreet Singh" class="profile-photo">
-        <h1 class="name">Amanpreet Singh</h1>
-        <p class="title">MSc (CSE) Candidate — McMaster University</p>
+  <nav>
+    <div class="inner">
+      <ul>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#publications">Publications</a></li>
+      </ul>
+    </div>
+  </nav>
 
-        <div class="contact">
-          <a class="contact-btn" href="mailto:amanpreetofficial22@gmail.com">Email</a>
-          <a class="contact-btn" href="https://github.com/amanpreet60" target="_blank" rel="noopener">GitHub</a>
-          <a class="contact-btn" href="https://www.linkedin.com/in/amanpreetsingh2212/" target="_blank" rel="noopener">LinkedIn</a>
-        </div>
+  <div class="shell">
 
-        <div class="download">
-          <a class="download-cv" href="assets/Amanpreet_Resume_1.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
-        </div>
+    <!-- LEFT -->
+    <aside class="sidebar">
+      <img class="hero-photo" src="IMG_6814 2.png" alt="Amanpreet Singh" />
+      <h1 class="hero-name">Amanpreet<br/><em>Singh</em></h1>
+      <p class="hero-badge">Open to opportunities</p>
+      <p class="hero-tagline">Graduate researcher in Mathematics &amp; Statistics — working on agentic AI &amp; ML.</p>
+      <div class="contact-links">
+        <a href="mailto:amanpreetofficial22@gmail.com">
+          <i class="fa-solid fa-envelope"></i>
+          amanpreetofficial22@gmail.com
+        </a>
+        <a href="tel:+19059819232">
+          <i class="fa-solid fa-phone"></i>
+          +1 905 981 9232
+        </a>
+        <a href="https://linkedin.com/in/amanpreet-singh-60" target="_blank" rel="noopener">
+          <i class="fa-brands fa-linkedin-in"></i>
+          LinkedIn
+        </a>
+        <a href="https://github.com/amanpreet60" target="_blank" rel="noopener">
+          <i class="fa-brands fa-github"></i>
+          GitHub
+        </a>
       </div>
+      <a class="download-btn" href="Amanpreet_Resume.pdf" download>
+        <i class="fa-solid fa-download"></i> Download CV
+      </a>
+      <p class="sidebar-loc">Hamilton, Canada · 2026</p>
     </aside>
 
-    <!-- RIGHT: main content -->
-    <main class="content" id="main" role="main">
-      <div class="inner">
-        <section id="summary" class="section">
-          <h2>Professional Summary</h2>
-          <p>
-            Data-focused engineering graduate pursuing Computational Science & Engineering. Experienced building ML pipelines, analyzing
-            large datasets, and teaching data science concepts. Interested in ML / generative AI and practical deployments.
-          </p>
-        </section>
+    <!-- RIGHT -->
+    <main class="main">
 
-        <section id="education" class="section">
-          <h2>Education</h2>
-          <ul class="list">
-            <li><strong>Master’s in Computational Science and Engineering</strong>, McMaster University — (expected Dec 2026)</li>
-            <li><strong>Bachelor of Computer Science & Business Systems</strong>, NMIMS University — May 2023 • CGPA: 3.70/4</li>
-          </ul>
-        </section>
+      <div class="section" id="experience">
+        <div class="section-head">
+          <span class="section-label">Experience</span>
+        </div>
 
-        <section id="skills" class="section">
-          <h2>Skills</h2>
-          <p><strong>Programming:</strong> Python · SQL · Git · JavaScript · C · R · HTML · CSS</p>
-          <p><strong>Tools:</strong> ServiceNow · MATLAB · SSMS · RStudio · Jupyter · Jira · StarUML</p>
-          <p><strong>Certifications:</strong> Microsoft Certified: Azure AI Fundamentals</p>
-        </section>
-
-        <section id="experience" class="section">
-          <h2>Experience</h2>
-          <ul class="list">
-            <li>
-              <strong>Data Science Teaching Assistant</strong> — McMaster University (Sep 2025 – Present).
-              Assisted in teaching core data science concepts, labs and grading.
-            </li>
-            <li>
-              <strong>Systems Engineer</strong> — Shell India Markets Pvt. Ltd. (Aug 2023 – Dec 2024).
-              Worked on ServiceNow automations, incident analysis and integrations.
-            </li>
-            <li>
-              <strong>Data Analyst (Intern)</strong> — Vakrangee Ltd. (May 2022 – Jun 2022).
-              Implemented SQL views, ETL tasks and reporting improvements.
-            </li>
-          </ul>
-        </section>
-
-        <section id="projects" class="section">
-          <h2>Projects</h2>
-          <div class="projects-grid">
-            <!-- Project postcard -->
-            <article class="project-card">
-              <h3>AI Career Guidance System</h3>
-              <p>Career recommendation system using ML & psychometric inputs (~95% accuracy).</p>
-              <a class="project-link" href="https://github.com/amanpreet60/AI-Career-Guidance-System" target="_blank" rel="noopener">View on GitHub</a>
-            </article>
-
-            <article class="project-card">
-              <h3>License Plate Detection</h3>
-              <p>Image-processing pipeline (thresholding, edges, contours) for plate localization.</p>
-              <a class="project-link" href="https://github.com/amanpreet60/LICENSE-PLATE-LOCATION-METHOD-BASED-ON-EDGE-DETECTION" target="_blank" rel="noopener">View on GitHub</a>
-            </article>
-
-            <article class="project-card">
-              <h3>Audio Classification (Sirens)</h3>
-              <p>RNN/GRU based audio classifier to detect emergency sirens (98.8% accuracy).</p>
-              <a class="project-link" href="https://github.com/amanpreet60/Audio-Classification-of-Emergency-Vehicle-Sirens-Using-Recurrent-Neural-Network-Architectures" target="_blank" rel="noopener">View on GitHub</a>
-            </article>
-
-            <article class="project-card">
-              <h3>SMS Spam Detection</h3>
-              <p>Text classification using feature-extraction, vectorization and model comparison.</p>
-              <a class="project-link" href="https://github.com/amanpreet60/SMS-Spam-Detection" target="_blank" rel="noopener">View on GitHub</a>
-            </article>
+        <div class="entry">
+          <div class="entry-body">
+            <div class="title-row">
+              <h3>Data Science Teaching Assistant</h3>
+              <span class="entry-period">Sep 2025 – Now</span>
+            </div>
+            <div class="org-row">
+              <span class="org">McMaster University</span>
+              <span class="loc">Hamilton, Canada</span>
+            </div>
+            <ul>
+              <li>Taught statistical modeling, machine learning, and data visualization through lectures, labs, and exercises.</li>
+              <li>Graded assignments, held office hours, and mentored students one-on-one on Python, R, and data analysis.</li>
+            </ul>
           </div>
-        </section>
+        </div>
 
-        <section id="publications" class="section">
-          <h2>Publications</h2>
-          <ul class="list">
-            <li>Review of AI Career Recommender Approaches — ScienceOpen (Aug 2024)</li>
-            <li>Audio Classification of Emergency Vehicle Sirens — Springer Book Series (Oct 2023)</li>
-          </ul>
-        </section>
+        <div class="entry">
+          <div class="entry-body">
+            <div class="title-row">
+              <h3>Systems Engineer</h3>
+              <span class="entry-period">Aug 2023 – Dec 2024</span>
+            </div>
+            <div class="org-row">
+              <span class="org">Shell India Markets Pvt. Ltd.</span>
+              <span class="loc">Bengaluru, India</span>
+            </div>
+            <ul>
+              <li>Conducted impact analysis on automated flows and design infrastructure, saving ~2 weeks of developer time per cycle.</li>
+              <li>Analyzed ServiceNow Incident Management data to surface trends and root causes, cutting resolution effort by 20% within SLA.</li>
+              <li>Owned the joiner–mover–leaver microservice module; built automation pipelines and REST APIs using JavaScript.</li>
+            </ul>
+          </div>
+        </div>
 
-        <footer class="site-footer">
-          © <span id="year"></span> Amanpreet Singh — Built for GitHub Pages
-        </footer>
+        <div class="entry">
+          <div class="entry-body">
+            <div class="title-row">
+              <h3>Data Analyst Intern</h3>
+              <span class="entry-period">May – Jun 2022</span>
+            </div>
+            <div class="org-row">
+              <span class="org">Vakrangee Ltd.</span>
+              <span class="loc">Mumbai, India</span>
+            </div>
+            <ul>
+              <li>Built views, stored procedures, and CRUD operations in SSMS to optimize database performance.</li>
+              <li>Designed ETL pipelines for data warehousing to support analytics and business reporting.</li>
+            </ul>
+          </div>
+        </div>
       </div>
+
+      <div class="section" id="projects">
+        <div class="section-head">
+          <span class="section-label">Projects</span>
+        </div>
+
+        <div class="project-entry">
+          <div>
+            <div class="title-row">
+              <h3>RAG Pipeline</h3>
+              <span class="entry-period">Jan 2026</span>
+            </div>
+            <p>Retrieval-Augmented Generation pipeline using HuggingFace Transformers and LangChain for context-aware AI responses with vector-based document retrieval.</p>
+            <a class="gh-link" href="https://github.com/amanpreet60/llm_agentic_rag_system" target="_blank" rel="noopener">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              GitHub ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="project-entry">
+          <div>
+            <div class="title-row">
+              <h3>Cost-Optimized Credit Risk Modeling</h3>
+              <span class="entry-period">Nov 2025</span>
+            </div>
+            <p>Credit risk prediction model within a cost-sensitive framework to assess loan default likelihood and optimize financial decision-making.</p>
+            <a class="gh-link" href="https://github.com/amanpreet60/Cost-Optimized-Credit-Risk-Modeling" target="_blank" rel="noopener">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              GitHub ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="project-entry">
+          <div>
+            <div class="title-row">
+              <h3>House Price Prediction Pipeline</h3>
+              <span class="entry-period">Jun 2025</span>
+            </div>
+            <p>End-to-end ML pipeline for real estate market prediction — data collection, preprocessing, model training, and deployment.</p>
+            <a class="gh-link" href="https://github.com/amanpreet60/Market_ml_system" target="_blank" rel="noopener">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              GitHub ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="project-entry">
+          <div>
+            <div class="title-row">
+              <h3>License Plate Detection</h3>
+              <span class="entry-period">Feb 2023</span>
+            </div>
+            <p>Plate localization via edge detection, morphological operations, and contour detection using TensorFlow, pytesseract, skimage, and PIL.</p>
+            <a class="gh-link" href="https://github.com/amanpreet60/LICENSE-PLATE-LOCATION-METHOD-BASED-ON-EDGE-DETECTION" target="_blank" rel="noopener">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              GitHub ↗
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="education">
+        <div class="section-head">
+          <span class="section-label">Education</span>
+        </div>
+
+        <div class="entry">
+          <div class="entry-body">
+            <div class="title-row">
+              <h3>M.Sc. Computational Science &amp; Engineering</h3>
+              <span class="entry-period">2024 – 2026</span>
+            </div>
+            <div class="org-row">
+              <a class="org" href="https://math.mcmaster.ca/undergraduate/math-stats-society/" target="_blank" rel="noopener">McMaster University ↗</a>
+              <span class="loc">Hamilton, Canada</span>
+            </div>
+            <p>Funded research on a nonparametric framework for repeated spatial clustering using Transformers.</p>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-body">
+            <div class="title-row">
+              <h3>B.Sc. Computer Science &amp; Business Systems</h3>
+              <span class="entry-period">2019 – 2023</span>
+            </div>
+            <div class="org-row">
+              <a class="org" href="https://engineering.nmims.edu/" target="_blank" rel="noopener">NMIMS University ↗</a>
+              <span class="loc">Mumbai, India</span>
+            </div>
+            <div class="cgpa">CGPA 3.70 / 4.0</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="skills">
+        <div class="section-head">
+          <span class="section-label">Skills</span>
+        </div>
+        <div class="skills-list">
+          <div class="skill-row">
+            <span class="skill-cat">AI / ML</span>
+            <span class="skill-vals">Hugging Face · LangChain · MLflow · OpenAI APIs</span>
+          </div>
+          <div class="skill-row">
+            <span class="skill-cat">Languages</span>
+            <span class="skill-vals">Python · SQL · JavaScript · R · C · HTML / CSS · Git</span>
+          </div>
+          <div class="skill-row">
+            <span class="skill-cat">Tools</span>
+            <span class="skill-vals">ServiceNow · SSMS · RStudio · Jira · GitHub</span>
+          </div>
+          <div class="skill-row">
+            <span class="skill-cat">Cert</span>
+            <span class="skill-vals">Microsoft Azure AI Fundamentals</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="publications">
+        <div class="section-head">
+          <span class="section-label">Publications</span>
+        </div>
+
+        <div class="pub-entry">
+          <div>
+            <h3>Audio Classification of Emergency Vehicle Sirens Using Recurrent Neural Network Architectures</h3>
+            <span class="pub-date">Oct 2023</span>
+            <a class="venue" href="https://link.springer.com/chapter/10.1007/978-981-99-4626-6_6" target="_blank" rel="noopener">Springer Book Series ↗</a>
+          </div>
+        </div>
+
+        <div class="pub-entry">
+          <div>
+            <h3>Review of Approaches Towards Building AI-Based Career Recommender &amp; Guidance Systems</h3>
+            <span class="pub-date">Aug 2024</span>
+            <a class="venue" href="https://www.scienceopen.com/hosted-document?doi=10.14293/PR2199.000978.v1" target="_blank" rel="noopener">ScienceOpen ↗</a>
+          </div>
+        </div>
+      </div>
+
     </main>
   </div>
 
-  <script src="js/main.js" defer></script>
 </body>
 </html>
