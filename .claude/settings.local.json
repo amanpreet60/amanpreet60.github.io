@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(gh repo:*)",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(ls \"/Users/amanpreetsingh/My Computer/VSCode/amanpreet60.github.io/\"*.pdf)"
     ]
   }
 }
