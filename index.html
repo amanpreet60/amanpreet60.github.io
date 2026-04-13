@@ -309,9 +309,11 @@
       color: var(--blue-border);
     }
 
-    .entry-body ul { list-style: none; padding: 0; }
+    .entry-body ul,
+    .project-entry ul { list-style: none; padding: 0; margin-top: 6px; }
 
-    .entry-body ul li {
+    .entry-body ul li,
+    .project-entry ul li {
       font-size: 14px;
       color: var(--muted);
       line-height: 1.75;
@@ -321,7 +323,8 @@
       text-align: justify;
     }
 
-    .entry-body ul li::before {
+    .entry-body ul li::before,
+    .project-entry ul li::before {
       content: '·';
       position: absolute;
       left: 0;
