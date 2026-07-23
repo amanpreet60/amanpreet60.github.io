@@ -35,7 +35,6 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── Scrollbar ── */
     ::-webkit-scrollbar { width: 3px; }
     ::-webkit-scrollbar-track { background: transparent; }
     ::-webkit-scrollbar-thumb { background: var(--blue-border); border-radius: 4px; }
@@ -55,10 +54,11 @@
     nav .inner {
       max-width: 860px;
       margin: 0 auto;
-      padding: 0 0 0 310px;
+      padding: 0;
       height: 100%;
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 28px;
     }
 
@@ -94,21 +94,21 @@
       height: calc(100vh - 50px);
       background: var(--sidebar-bg);
       border-right: 1px solid var(--divider);
-      padding: 44px 36px 36px;
+      padding: 32px 36px 32px;
       display: flex;
       flex-direction: column;
-      overflow: hidden;
+      overflow-y: auto;
     }
 
     .hero-photo {
-      width: 165px;
-      height: 165px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       object-fit: cover;
       object-position: center 10%;
       display: block;
       border: 2px solid var(--blue-border);
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
 
     .hero-name {
@@ -175,7 +175,6 @@
     .contact-links a i { color: var(--blue-mid); flex-shrink: 0; font-size: 14px; width: 16px; text-align: center; margin-top: 2px; transition: color 0.15s; }
     .contact-links a:hover i { color: var(--blue); }
     .contact-links a:hover { color: var(--blue); }
-    .contact-links a:hover svg { stroke: var(--blue); }
 
     .download-btn {
       display: inline-flex;
@@ -216,7 +215,6 @@
       max-width: 640px;
     }
 
-    /* ── Section ── */
     .section { margin-bottom: 52px; }
     .section:last-child { margin-bottom: 0; }
 
@@ -237,7 +235,6 @@
       color: var(--blue);
     }
 
-    /* ── Entry ── */
     .entry {
       display: flex;
       flex-direction: column;
@@ -247,13 +244,6 @@
     }
 
     .entry:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-
-    .cgpa {
-      font-size: 12px;
-      color: var(--subtle);
-      font-style: italic;
-      margin-top: 3px;
-    }
 
     .entry-period {
       font-size: 12px;
@@ -295,18 +285,13 @@
       transition: color 0.15s;
     }
 
-    a.org:hover { color: var(--blue-mid); text-decoration: none; }
+    a.org:hover { color: var(--blue-mid); }
 
     .entry-body .loc {
       font-size: 12px;
       color: var(--subtle);
       font-style: italic;
-    }
-
-    .entry-body .loc::before {
-      content: '·';
-      margin-right: 8px;
-      color: var(--blue-border);
+      margin-left: 16px;
     }
 
     .entry-body ul,
@@ -351,13 +336,6 @@
 
     .project-entry:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 
-    .project-entry .proj-date {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--blue-mid);
-      margin-bottom: 4px;
-    }
-
     .project-entry h3 {
       font-size: 15.5px;
       font-weight: 600;
@@ -370,13 +348,15 @@
       color: var(--muted);
       line-height: 1.7;
       text-align: justify;
+      margin-top: 6px;
     }
+
+    .proj-links { display: flex; gap: 12px; margin-top: 6px; }
 
     .gh-link {
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      margin-top: 6px;
       font-size: 11px;
       font-weight: 500;
       color: var(--blue);
@@ -385,8 +365,6 @@
     }
 
     .gh-link:hover { color: var(--blue-mid); }
-
-    .try-link { display: inline-flex; }
 
     /* ── Skills ── */
     .skills-list {
@@ -408,10 +386,10 @@
     .skill-cat {
       font-size: 11.5px;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--blue);
-      width: 90px;
+      width: 150px;
       flex-shrink: 0;
     }
 
@@ -441,12 +419,6 @@
       text-align: justify;
     }
 
-    .pub-meta {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
     .pub-date {
       display: block;
       font-size: 12px;
@@ -471,12 +443,11 @@
     /* ── Mobile ── */
     @media (max-width: 540px) {
       .shell { flex-direction: column; margin-top: 50px; }
-      .sidebar { width: 100%; position: relative; top: 0; height: auto; border-right: none; border-bottom: 1px solid var(--divider); padding: 28px 24px; }
+      .sidebar { width: 100%; position: relative; top: 0; height: auto; border-right: none; border-bottom: 1px solid var(--divider); padding: 28px 24px; overflow: visible; }
       .main { padding: 28px 20px 52px; max-width: 100%; }
-      .entry, .project-entry, .pub-entry { grid-template-columns: 1fr; gap: 4px; }
-      .entry-meta, .project-entry .proj-date, .pub-date { margin-bottom: 4px; }
       .skill-row { flex-direction: column; gap: 6px; }
-      nav ul { gap: 16px; }
+      .skill-cat { width: auto; }
+      nav ul { gap: 16px; flex-wrap: wrap; justify-content: center; }
     }
   </style>
 </head>
@@ -486,6 +457,7 @@
     <div class="inner">
       <ul>
         <li><a href="#summary">Summary</a></li>
+        <li><a href="#research">Research</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#education">Education</a></li>
@@ -504,26 +476,13 @@
       <p class="hero-badge">Open to opportunities</p>
       <p class="hero-tagline">Graduate researcher in Mathematics &amp; Statistics, working on agentic AI &amp; ML.</p>
       <div class="contact-links">
-        <a href="mailto:amanpreetofficial22@gmail.com">
-          <i class="fa-solid fa-envelope"></i>
-          amanpreetofficial22@gmail.com
-        </a>
-        <a href="tel:+19059819232">
-          <i class="fa-solid fa-phone"></i>
-          +1 905 981 9232
-        </a>
-        <a href="https://linkedin.com/in/amanpreet-singh-60" target="_blank" rel="noopener">
-          <i class="fa-brands fa-linkedin-in"></i>
-          LinkedIn
-        </a>
-        <a href="https://github.com/amanpreet60" target="_blank" rel="noopener">
-          <i class="fa-brands fa-github"></i>
-          GitHub
-        </a>
+        <a href="mailto:amanpreetofficial22@gmail.com"><i class="fa-solid fa-envelope"></i>amanpreetofficial22@gmail.com</a>
+        <a href="tel:+19059819232"><i class="fa-solid fa-phone"></i>+1 905 981 9232</a>
+        <a href="https://linkedin.com/in/amanpreet-singh-60" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i>LinkedIn</a>
+        <a href="https://github.com/amanpreet60" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i>GitHub</a>
+        <a href="https://orcid.org/0009-0008-0702-4474" target="_blank" rel="noopener"><i class="fa-brands fa-orcid"></i>ORCID</a>
       </div>
-      <a class="download-btn" href="Amanpreet_Singh_Resume.pdf" download>
-        <i class="fa-solid fa-download"></i> Download CV
-      </a>
+      <a class="download-btn" href="Amanpreet_Singh_CV.pdf" download><i class="fa-solid fa-download"></i> Download CV</a>
       <p class="sidebar-loc">Hamilton, Canada · 2026</p>
     </aside>
 
@@ -531,30 +490,56 @@
     <main class="main">
 
       <div class="section" id="summary">
-        <div class="section-head">
-          <span class="section-label">Summary</span>
-        </div>
-        <p style="font-size:14px;color:var(--muted);line-height:1.8;text-align:justify;">ML focused Software Engineer with 1.5+ years of industry experience at Shell and Vakrangee, and funded graduate researcher in spatial clustering using Transformers at McMaster University. Built production grade data pipelines, RAG systems, and ServiceNow automations that cut operational overhead by 20%+. Looking to bring that end-to-end ML experience to an ML Engineer or Data Scientist role where models solve real problems and impact is measured.</p>
+        <div class="section-head"><span class="section-label">Summary</span></div>
+        <p style="font-size:14px;color:var(--muted);line-height:1.8;text-align:justify;">Machine Learning Engineer &amp; Researcher with a background in statistics and 1.5 years of experience in end-to-end software development. Created and maintain repSpat, an open-source Python package for nonparametric repeated spatial pattern detection, and delivered a workshop on it at the 2026 Bioconductor (BioC) conference. Peer-reviewed publication in deep learning. Hands-on across statistical modelling, deep learning (PyTorch), LLM and agentic systems, and applied ML on financial data.</p>
       </div>
 
-      <div class="section" id="experience">
-        <div class="section-head">
-          <span class="section-label">Experience</span>
+      <div class="section" id="research">
+        <div class="section-head"><span class="section-label">Research</span></div>
+
+        <div class="entry">
+          <div class="entry-body">
+            <div class="title-row">
+              <h3>repSpat</h3>
+              <span class="entry-period">Feb 2026 – Present</span>
+            </div>
+            <ul>
+              <li>Built an open-source Python package that finds repeated spatial patterns in tissue data, regions that sit apart but share similar cell profiles.</li>
+              <li>Implemented a statistical significance test to validate detected patterns, and ensured compatibility with standard research tools for straightforward adoption.</li>
+            </ul>
+            <div class="proj-links">
+              <a class="gh-link" href="https://github.com/amanpreet60/repspat" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub ↗</a>
+            </div>
+          </div>
         </div>
 
         <div class="entry">
           <div class="entry-body">
             <div class="title-row">
-              <h3>Data Science Teaching Assistant</h3>
-              <span class="entry-period">Sep 2025 – Now</span>
-            </div>
-            <div class="org-row">
-              <span class="org">McMaster University</span>
-              <span class="loc">Hamilton, Canada</span>
+              <h3>Attention-Based Feature Selection for High-Dimensional Clustering</h3>
+              <span class="entry-period">Sep 2025 – Present</span>
             </div>
             <ul>
-              <li>Instructed 60+ graduate students in statistical modeling, machine learning, and data science through weekly labs and structured office hours, contributing to improved course completion rates.</li>
-              <li>Graded assignments and provided detailed feedback, reinforcing applied understanding of core data science concepts.</li>
+              <li>Developing a method that performs clustering and feature selection jointly, optimized in a stage-wise manner to handle high-dimensional data.</li>
+              <li>Applying multi-head self-attention as a feature-gating mechanism, so the model learns which features matter across the levels of a hierarchical clustering; manuscript in preparation.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="experience">
+        <div class="section-head"><span class="section-label">Experience</span></div>
+
+        <div class="entry">
+          <div class="entry-body">
+            <div class="title-row">
+              <h3>Teaching Assistant, Data Science</h3>
+              <span class="entry-period">Sep 2025 – Present</span>
+            </div>
+            <div class="org-row"><span class="org">McMaster University</span><span class="loc">Hamilton, ON</span></div>
+            <ul>
+              <li>Assisted in teaching core data science concepts such as statistical modelling, machine learning, and data visualization, guiding 100+ undergraduate students through labs and practical exercises.</li>
+              <li>Supported student learning by grading assignments, holding office hours, and mentoring one-on-one on Python, R, and data analysis techniques.</li>
             </ul>
           </div>
         </div>
@@ -565,14 +550,12 @@
               <h3>Systems Engineer</h3>
               <span class="entry-period">Aug 2023 – Dec 2024</span>
             </div>
-            <div class="org-row">
-              <span class="org">Shell India Markets Pvt. Ltd.</span>
-              <span class="loc">Bengaluru, India</span>
-            </div>
+            <div class="org-row"><span class="org">Shell India Markets Pvt. Ltd.</span><span class="loc">Bengaluru, India</span></div>
             <ul>
-              <li>Responsible for end-to-end automation for 3 critical microservice modules (joiner/mover/leaver), designing REST API integrations and server-side JavaScript workflows that eliminated manual steps for 500+ employee transitions annually.</li>
-              <li>Reduced developer rework by 2 weeks per release cycle by leading impact analysis on automated flows, records, and design infrastructure for a ServiceNow platform serving 10,000+ users.</li>
-              <li>Drove a 20% reduction in incident resolution effort by building trend analysis dashboards on ServiceNow Incident Management data, identifying recurring root causes and enabling proactive SLA compliance.</li>
+              <li>Owned the joiner-mover-leaver module on ServiceNow, a microservice-based component that manages employee onboarding, role changes, and offboarding, handling 500+ lifecycle transitions each year.</li>
+              <li>Developed automation pipelines and integrated REST APIs to streamline workflows and reduce manual effort, using client- and server-side JavaScript.</li>
+              <li>Conducted impact analysis on proposed changes ahead of each release, ensuring smooth rollouts and saving roughly two weeks of developer time per cycle.</li>
+              <li>Analyzed ServiceNow Incident Management data to identify trends and root causes, reducing incident-resolution effort by 20% and improving SLA compliance.</li>
             </ul>
           </div>
         </div>
@@ -583,10 +566,7 @@
               <h3>Data Analyst Intern</h3>
               <span class="entry-period">May – Jun 2022</span>
             </div>
-            <div class="org-row">
-              <span class="org">Vakrangee Ltd.</span>
-              <span class="loc">Mumbai, India</span>
-            </div>
+            <div class="org-row"><span class="org">Vakrangee Ltd.</span><span class="loc">Mumbai, India</span></div>
             <ul>
               <li>Developed views, stored procedures, and implemented CRUD operations on SQL Server Management Studio (SSMS) to optimize database performance and streamline data retrieval, ensuring high availability and reliability of data resources.</li>
               <li>Managed and developed data warehousing solutions by applying ETL techniques to extract, transform, and load data from multiple sources ensuring data consistency and accuracy to support analytics and business reporting on company's website.</li>
@@ -596,170 +576,139 @@
       </div>
 
       <div class="section" id="projects">
-        <div class="section-head">
-          <span class="section-label">Projects</span>
-        </div>
+        <div class="section-head"><span class="section-label">Projects</span></div>
 
         <div class="project-entry">
-          <div>
-            <div class="title-row">
-              <h3>Agentic Business Intelligence</h3>
-              <span class="entry-period">Jan 2026</span>
-            </div>
-            <ul>
-              <li>Built an end-to-end business intelligence application using Python, Streamlit, and DeepSeek LLM that automates competitive analysis by orchestrating web research, NLP pipelines, and SWOT synthesis into downloadable professional reports.</li>
-              <li>Designed a multi-stage agentic AI pipeline integrating HuggingFace Inference API, DistilBERT, MiniLM embeddings, and KMeans clustering to transform unstructured web data into structured strategic insights with real-time streamed output.</li>
-            </ul>
-            <a class="gh-link" href="https://github.com/amanpreet60/AgenticAI" target="_blank" rel="noopener">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-              GitHub ↗
-            </a>
-            <a class="gh-link try-link" href="https://huggingface.co/spaces/aman2200/Company_insight" target="_blank" rel="noopener" style="margin-left:12px;">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              Try it ↗
-            </a>
+          <div class="title-row">
+            <h3>AI Market &amp; Competitor Analysis Tool</h3>
+            <span class="entry-period">Jan 2026</span>
+          </div>
+          <ul>
+            <li>Developed a multi-stage LLM pipeline (Python, Streamlit, DeepSeek-V3.2 via HuggingFace Inference API) that decomposes a company query into targeted web searches, applies retrieval-augmented generation, and synthesizes a SWOT analysis into a streamed business-intelligence report.</li>
+            <li>Turned unstructured web search results into structured, queryable insights using MiniLM embeddings, DistilBERT sentiment, BERT-NER entity extraction, and KMeans clustering.</li>
+          </ul>
+          <div class="proj-links">
+            <a class="gh-link" href="https://github.com/amanpreet60/AgenticAI" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub ↗</a>
           </div>
         </div>
 
         <div class="project-entry">
-          <div>
-            <div class="title-row">
-              <h3>RAG Pipeline</h3>
-              <span class="entry-period">Jan 2026</span>
-            </div>
-            <p>Retrieval-Augmented Generation pipeline using HuggingFace Transformers and LangChain for context-aware AI responses with vector-based document retrieval.</p>
-            <a class="gh-link" href="https://github.com/amanpreet60/llm_agentic_rag_system" target="_blank" rel="noopener">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-              GitHub ↗
-            </a>
-            <a class="gh-link try-link" href="https://huggingface.co/spaces/aman2200/RAG" target="_blank" rel="noopener" style="margin-left:12px;">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              Try it ↗
-            </a>
+          <div class="title-row">
+            <h3>RAG Pipeline for Context-Aware Q&amp;A</h3>
+            <span class="entry-period">Dec 2025</span>
+          </div>
+          <ul>
+            <li>Created a Retrieval-Augmented Generation module (Python, LangChain, HuggingFace Inference API) that retrieves relevant knowledge from Wikipedia and generates context-aware answers with Meta-LLaMA 3.1 Instruct.</li>
+            <li>Improved retrieval speed and accuracy with semantic chunking, near-duplicate filtering, and a persistent Chroma vector store (all-MiniLM-L6-v2 embeddings).</li>
+          </ul>
+          <div class="proj-links">
+            <a class="gh-link" href="https://github.com/amanpreet60/llm_agentic_rag_system" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub ↗</a>
           </div>
         </div>
 
         <div class="project-entry">
-          <div>
-            <div class="title-row">
-              <h3>Cost-Optimized Credit Risk Modeling</h3>
-              <span class="entry-period">Nov 2025</span>
-            </div>
-            <ul>
-              <li>Built a credit risk prediction model achieving strong AUC on loan default classification, incorporating asymmetric loss functions to reduce false-negative approval costs in a cost-sensitive financial framework.</li>
-              <li>Tracked experiments and hyperparameter tuning using MLflow, enabling reproducible model evaluation across multiple classifiers.</li>
-            </ul>
-            <a class="gh-link" href="https://github.com/amanpreet60/Cost-Optimized-Credit-Risk-Modeling" target="_blank" rel="noopener">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-              GitHub ↗
-            </a>
+          <div class="title-row">
+            <h3>Cost-Optimized Credit Risk Modelling</h3>
+            <span class="entry-period">Nov 2025</span>
+          </div>
+          <ul>
+            <li>Designed and evaluated a loan-default prediction model within a cost-sensitive framework, incorporating the asymmetric costs of lending decisions to prioritize catching defaulters (0.86 recall on the default class) over raw accuracy.</li>
+          </ul>
+          <div class="proj-links">
+            <a class="gh-link" href="https://github.com/amanpreet60/Cost-Optimized-Credit-Risk-Modelling" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub ↗</a>
           </div>
         </div>
 
         <div class="project-entry">
-          <div>
-            <div class="title-row">
-              <h3>House Price Prediction Pipeline</h3>
-              <span class="entry-period">Jun 2025</span>
-            </div>
-            <ul>
-              <li>Deployed an end-to-end ML pipeline (data ingestion → preprocessing → training → API endpoint) for real estate price prediction, with automated retraining via CI/CD on GitHub Actions.</li>
-            </ul>
-            <a class="gh-link" href="https://github.com/amanpreet60/Market_ml_system" target="_blank" rel="noopener">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-              GitHub ↗
-            </a>
+          <div class="title-row">
+            <h3>End-to-End ML Pipeline (ZenML, MLflow)</h3>
+            <span class="entry-period">Jun 2025</span>
+          </div>
+          <ul>
+            <li>Engineered a modular, reproducible ML pipeline (ZenML, MLflow) for house-price prediction, automating data ingestion, feature engineering, model training, evaluation, and deployment with experiment tracking.</li>
+          </ul>
+          <div class="proj-links">
+            <a class="gh-link" href="https://github.com/amanpreet60/Market_ml_system" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub ↗</a>
           </div>
         </div>
 
         <div class="project-entry">
-          <div>
-            <div class="title-row">
-              <h3>License Plate Detection</h3>
-              <span class="entry-period">Feb 2023</span>
-            </div>
-            <p>Plate localization via edge detection, morphological operations, and contour detection using TensorFlow, pytesseract, skimage, and PIL.</p>
-            <a class="gh-link" href="https://github.com/amanpreet60/LICENSE-PLATE-LOCATION-METHOD-BASED-ON-EDGE-DETECTION" target="_blank" rel="noopener">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-              GitHub ↗
-            </a>
+          <div class="title-row">
+            <h3>License Plate Detection</h3>
+            <span class="entry-period">Feb 2023</span>
+          </div>
+          <p>Plate localization via edge detection, morphological operations, and contour detection using TensorFlow, pytesseract, skimage, and PIL.</p>
+          <div class="proj-links">
+            <a class="gh-link" href="https://github.com/amanpreet60/LICENSE-PLATE-LOCATION-METHOD-BASED-ON-EDGE-DETECTION" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub ↗</a>
           </div>
         </div>
       </div>
 
       <div class="section" id="education">
-        <div class="section-head">
-          <span class="section-label">Education</span>
-        </div>
+        <div class="section-head"><span class="section-label">Education</span></div>
 
         <div class="entry">
           <div class="entry-body">
             <div class="title-row">
-              <h3>M.Sc. Computational Science &amp; Engineering</h3>
+              <h3>M.Sc., Computational Science and Engineering</h3>
               <span class="entry-period">Dec 2026</span>
             </div>
-            <div class="org-row">
-              <a class="org" href="https://math.mcmaster.ca/undergraduate/math-stats-society/" target="_blank" rel="noopener">McMaster University ↗</a>
-              <span class="loc">Hamilton, Canada</span>
-            </div>
-            <p>Funded research on a nonparametric framework for repeated spatial clustering using Transformers.</p>
+            <div class="org-row"><a class="org" href="https://math.mcmaster.ca/undergraduate/math-stats-society/" target="_blank" rel="noopener">McMaster University ↗</a><span class="loc">Hamilton, ON</span></div>
+            <ul>
+              <li>Funded graduate research student. Focus: nonparametric methods for repeated spatial clustering and high-dimensional statistical inference.</li>
+              <li>CGPA 3.93/4.00.</li>
+            </ul>
           </div>
         </div>
 
         <div class="entry">
           <div class="entry-body">
             <div class="title-row">
-              <h3>B.Sc. Computer Science &amp; Business Systems</h3>
-              <span class="entry-period">2019 – 2023</span>
+              <h3>B.Tech., Computer Science and Business Systems</h3>
+              <span class="entry-period">May 2023</span>
             </div>
-            <div class="org-row">
-              <a class="org" href="https://engineering.nmims.edu/" target="_blank" rel="noopener">NMIMS University ↗</a>
-              <span class="loc">Mumbai, India</span>
-            </div>
-            <div class="cgpa">CGPA 3.70 / 4.0</div>
+            <div class="org-row"><a class="org" href="https://engineering.nmims.edu/" target="_blank" rel="noopener">NMIMS University ↗</a><span class="loc">Mumbai, India</span></div>
+            <ul>
+              <li>Foundational coursework in CS, statistics, and business systems; authored deep learning publication.</li>
+              <li>CGPA 3.70/4.00.</li>
+            </ul>
           </div>
         </div>
       </div>
 
       <div class="section" id="skills">
-        <div class="section-head">
-          <span class="section-label">Skills</span>
-        </div>
+        <div class="section-head"><span class="section-label">Skills</span></div>
         <div class="skills-list">
           <div class="skill-row">
             <span class="skill-cat">Languages</span>
-            <span class="skill-vals">Python · SQL · JavaScript · R · C · HTML/CSS · Git · Bash/Shell · NumPy · Pandas · Scikit-learn</span>
+            <span class="skill-vals">Python · SQL · R · JavaScript · Bash/Shell</span>
           </div>
           <div class="skill-row">
-            <span class="skill-cat">AI / ML</span>
-            <span class="skill-vals">PyTorch · TensorFlow/Keras · HuggingFace Transformers · LangChain · LangGraph · MLflow · OpenAI APIs · RAG · Vector Databases · Feature Engineering · ETL Pipelines · Data Warehousing · REST APIs · SSMS · Tableau/Power BI</span>
+            <span class="skill-cat">ML &amp; Deep Learning</span>
+            <span class="skill-vals">PyTorch · TensorFlow/Keras · scikit-learn · HuggingFace Transformers · NumPy · Pandas · SciPy · statsmodels</span>
           </div>
           <div class="skill-row">
-            <span class="skill-cat">Tools</span>
-            <span class="skill-vals">Azure (AZ-900 Certified) · AWS/GCP · Docker · Jupyter · ServiceNow · GitHub · Jira · RStudio</span>
+            <span class="skill-cat">LLM &amp; Gen AI</span>
+            <span class="skill-vals">RAG · agentic pipelines · LangChain · Chroma vector store · embeddings (MiniLM/Sentence Transformers) · sentiment analysis (DistilBERT) · NER (BERT) · HuggingFace Inference API · LLaMA · DeepSeek · prompt engineering</span>
+          </div>
+          <div class="skill-row">
+            <span class="skill-cat">MLOps &amp; Infrastructure</span>
+            <span class="skill-vals">ZenML · MLflow · Docker · REST API design · ETL pipelines · experiment tracking · model deployment</span>
+          </div>
+          <div class="skill-row">
+            <span class="skill-cat">Data &amp; Cloud</span>
+            <span class="skill-vals">data warehousing · SSMS · Azure (AI-900) · AWS · Tableau/Power BI</span>
           </div>
         </div>
       </div>
 
       <div class="section" id="publications">
-        <div class="section-head">
-          <span class="section-label">Publications</span>
-        </div>
+        <div class="section-head"><span class="section-label">Publications</span></div>
 
         <div class="pub-entry">
-          <div>
-            <h3>Audio Classification of Emergency Vehicle Sirens Using Recurrent Neural Network Architectures</h3>
-            <span class="pub-date">Oct 2023</span>
-            <a class="venue" href="https://link.springer.com/chapter/10.1007/978-981-99-4626-6_6" target="_blank" rel="noopener">Springer Book Series ↗</a>
-          </div>
-        </div>
-
-        <div class="pub-entry">
-          <div>
-            <h3>Review of Approaches Towards Building AI-Based Career Recommender &amp; Guidance Systems</h3>
-            <span class="pub-date">Aug 2024</span>
-            <a class="venue" href="https://www.scienceopen.com/hosted-document?doi=10.14293/PR2199.000978.v1" target="_blank" rel="noopener">ScienceOpen ↗</a>
-          </div>
+          <h3>Audio Classification of Emergency Vehicle Sirens Using Recurrent Neural Network Architectures</h3>
+          <span class="pub-date">Oct 2023</span>
+          <a class="venue" href="https://link.springer.com/chapter/10.1007/978-981-99-4626-6_6" target="_blank" rel="noopener">Springer Book Series ↗</a>
         </div>
       </div>
 
