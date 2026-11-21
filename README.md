@@ -24,5 +24,5 @@ A clean, single-page portfolio built with plain HTML and CSS (no frameworks). Fe
 ## Contact
 
 - Email: amanpreetofficial22@gmail.com
-- LinkedIn: [linkedin.com/in/amanpreet-singh-60](https://linkedin.com/in/amanpreet-singh-60)
+- LinkedIn: [linkedin.com/in/amanpreet-singh-60](https://linkedin.com/in/amanpreetsingh2212/)
 - GitHub: [github.com/amanpreet60](https://github.com/amanpreet60)
